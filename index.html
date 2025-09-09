@@ -103,6 +103,7 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
             text-align: center;
         }
+        .tooltip-container.active .tooltip,
         .tooltip-container:hover .tooltip {
             opacity: 1;
             visibility: visible;
@@ -165,7 +166,7 @@
 <body class="bg-black text-white flex flex-col items-center justify-center min-h-screen p-4">
 
     <!-- Header: Contains logo and contact button group -->
-    <div class="absolute top-0 left-0 w-full flex items-center justify-between px-8 py-8 pt-safe">
+    <div class="absolute top-0 left-0 w-full flex items-center justify-between px-8 py-4 md:py-8 pt-safe">
         <!-- Star Logo (Clickable) -->
         <div id="star-logo" class="w-8 h-8 cursor-pointer relative z-20">
             <svg class="w-full h-full text-white" viewBox="0 0 100 100" fill="currentColor">
@@ -186,9 +187,9 @@
     </div>
 
     <!-- Main Content: Centered profile information -->
-    <div class="space-y-4 flex flex-col items-center">
+    <div class="space-y-4 flex flex-col items-center mt-20 md:mt-0">
         <!-- Avatar -->
-        <div class="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+        <div class="w-32 h-32 rounded-full mb-2 md:mb-4 overflow-hidden relative">
             <img src="https://i.imgur.com/Olr00Lh.jpeg" alt="Matteo Fusco profile picture" class="w-full h-full rounded-full object-cover" style="object-position: 50% 8%;">
             <div class="absolute inset-0 rounded-full" style="box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);"></div>
         </div>
@@ -211,7 +212,7 @@
     </div>
 
     <!-- Bottom corners and centered languages -->
-    <div class="fixed bottom-0 w-full flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-8 px-8 py-8 pb-safe z-50">
+    <div class="fixed bottom-0 w-full flex flex-col items-center justify-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-8 px-8 py-4 md:py-8 pb-safe z-50">
         <!-- Bottom-Left: Glowing dot and availability -->
         <div class="flex items-center justify-center space-x-3 tooltip-container">
             <div class="glowing-dot"></div>
@@ -279,6 +280,33 @@
                 star.style.opacity = '0';
                 setTimeout(() => star.remove(), 1000);
             }, 800);
+        });
+
+        // Tooltip toggling for mobile and desktop
+        const tooltipContainers = document.querySelectorAll('.tooltip-container');
+
+        tooltipContainers.forEach(container => {
+            container.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevents document click from immediately closing
+                const isActive = container.classList.contains('active');
+                
+                // Close all other tooltips
+                tooltipContainers.forEach(otherContainer => {
+                    otherContainer.classList.remove('active');
+                });
+
+                // Toggle the current tooltip's active class
+                if (!isActive) {
+                    container.classList.add('active');
+                }
+            });
+        });
+
+        // Hide tooltips when tapping outside
+        document.addEventListener('click', () => {
+            tooltipContainers.forEach(container => {
+                container.classList.remove('active');
+            });
         });
     </script>
 </body>
