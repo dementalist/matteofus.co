@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matteo Fusco, UI/UX Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body and Font Styles */
+        body {
+            background-color: #000;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .font-primary {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        /* Glowing Dot Animation */
+        .glowing-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #34D399; /* Green-500 */
+            box-shadow: 0 0 5px #34D399, 0 0 10px #34D399, 0 0 15px #34D399, 0 0 20px #34D399;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Contact Button Ripple Effect */
+        .contact-button {
+            position: relative;
+            transition: box-shadow 0.3s ease-in-out;
+            border: 2px solid white;
+            z-index: 1; /* Ensure button is above the ripple */
+        }
+        .contact-button::after,
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid white; /* Thicker border for a more defined look */
+            border-radius: 9999px;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .contact-button:hover::after { animation: ripple-wave 2.5s ease-out infinite; }
+        .contact-button:hover::before { animation: ripple-wave 2.5s ease-out 0.8s infinite; }
+        @keyframes ripple-wave {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1; /* More visible at the start */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Tooltip Styles */
+        .tooltip-container {
+            display: inline-block;
+            position: relative;
+        }
+        .tooltip-container .tooltip {
+            position: absolute;
+            z-index: 10;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 12px;
+            background-color: white;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            text-align: center;
+        }
+        .tooltip-container:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        .name-tooltip {
+            bottom: calc(100% + 10px);
+            width: 250px;
+        }
+        .title-tooltip {
+            top: calc(100% + 10px);
+            width: 250px;
+        }
+
+        /* Underline Animation on Contact Button */
+        .animate-underline {
+            position: relative;
+        }
+        .animate-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 1px;
+            background-color: white;
+            box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white;
+            animation: dissolve-right 5s linear infinite;
+        }
+        @keyframes dissolve-right {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            10% {
+                width: 100%;
+                opacity: 1;
+            }
+            20% {
+                width: 100%;
+                opacity: 0;
+            }
+            100% {
+                width: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Star Burst Animation on Logo Click */
+        @keyframes star-burst {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- Header: Contains logo and contact button group -->
+    <div class="absolute top-0 left-0 w-full flex items-center justify-between p-8">
+        <!-- Star Logo (Clickable) -->
+        <div id="star-logo" class="w-8 h-8 cursor-pointer relative z-20">
+            <svg class="w-full h-full text-white" viewBox="0 0 100 100" fill="currentColor">
+                <path d="M50,0 Q52,48 100,50 Q52,52 50,100 Q48,52 0,50 Q48,48 50,0 Z" />
+            </svg>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="flex items-center space-x-4">
+            <p class="text-gray-400 animate-underline">Contact me</p>
+            <a href="mailto:ciao@matteofus.co" class="contact-button inline-flex items-center justify-center space-x-2 bg-white text-black font-medium py-2 px-6 rounded-full shadow-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
+                <span>ciao@matteofus.co</span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content: Centered profile information -->
+    <div class="space-y-4 flex flex-col items-center">
+        <!-- Avatar -->
+        <div class="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+            <img src="https://i.imgur.com/Olr00Lh.jpeg" alt="Matteo Fusco profile picture" class="w-full h-full rounded-full object-cover" style="object-position: 50% 8%;">
+            <div class="absolute inset-0 rounded-full" style="box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);"></div>
+        </div>
+        
+        <!-- Name and Title with Tooltips -->
+        <div class="space-y-1 flex flex-col items-center relative">
+            <div class="tooltip-container">
+                <h1 class="font-primary text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer">Matteo Fusco</h1>
+                <div class="tooltip name-tooltip">
+                    "Praised for his multi-year experience working remotely with US startups and companies, thanks to his ability to adapt and his willingness to collaborate across multiple teams."
+                </div>
+            </div>
+            <div class="tooltip-container">
+                <p class="font-primary text-xl md:text-2xl text-gray-400 font-light cursor-pointer">UI/UX Designer</p>
+                <div class="tooltip title-tooltip">
+                    <strong>UX design:</strong> The process of creating products that are useful, easy to use, and a pleasure to interact with.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom corners and centered languages -->
+    <div class="absolute bottom-10 w-full flex items-center justify-center">
+        <!-- Bottom-Left: Glowing dot and availability -->
+        <div class="absolute left-8 flex items-center justify-center space-x-3 tooltip-container">
+            <div class="glowing-dot"></div>
+            <p class="text-sm md:text-base">Limited availability</p>
+            <div class="tooltip name-tooltip">
+                This website was created with a mix of design and AI to maximize efficiency. ⚡
+            </div>
+        </div>
+
+        <!-- Bottom-Center: Languages and icon -->
+        <div class="flex items-center space-x-2 tooltip-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <p class="text-gray-400">English, Italian</p>
+            <div class="tooltip name-tooltip">
+                Spoken languages
+            </div>
+        </div>
+        
+        <!-- Bottom-Right: LinkedIn icon -->
+        <div class="absolute right-8">
+            <a href="https://www.linkedin.com/in/matteofusco1/" target="_blank" rel="noopener noreferrer">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.75 7 2.651v6.584z"/>
+                </svg>
+            </a>
+        </div>
+        
+    </div>
+    
+    <script>
+        document.getElementById('star-logo').addEventListener('click', () => {
+            const starLogo = document.getElementById('star-logo');
+            const rect = starLogo.getBoundingClientRect();
+            
+            const star = document.createElement('div');
+            star.innerHTML = '<span class="text-lg">✨</span>';
+            star.style.position = 'fixed';
+            star.style.left = `${rect.left + rect.width / 2}px`;
+            star.style.top = `${rect.top + rect.height / 2}px`;
+            star.style.opacity = '0';
+            star.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+            
+            // Randomize star position and rotation
+            const angle = Math.random() * 2 * Math.PI;
+            const distance = Math.random() * 50 + 20; // 20-70px radius
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            const rotation = Math.random() * 360;
+
+            document.body.appendChild(star);
+            
+            // Trigger animation
+            setTimeout(() => {
+                star.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(1.5)`;
+                star.style.opacity = '1';
+            }, 10);
+            
+            // Remove element after animation
+            setTimeout(() => {
+                star.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(0.5)`;
+                star.style.opacity = '0';
+                setTimeout(() => star.remove(), 1000);
+            }, 800);
+        });
+    </script>
+</body>
+</html>
