@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Matteo Fusco, UI/UX Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +157,7 @@
 <body class="bg-black text-white flex flex-col items-center justify-center min-h-screen p-4">
 
     <!-- Header: Contains logo and contact button group -->
-    <div class="absolute top-0 left-0 w-full flex items-center justify-between p-8">
+    <div class="absolute top-0 left-0 w-full flex items-center justify-between p-8" style="top: env(safe-area-inset-top);">
         <!-- Star Logo (Clickable) -->
         <div id="star-logo" class="w-8 h-8 cursor-pointer relative z-20">
             <svg class="w-full h-full text-white" viewBox="0 0 100 100" fill="currentColor">
@@ -203,7 +203,7 @@
     </div>
 
     <!-- Bottom corners and centered languages -->
-    <div class="absolute bottom-10 w-full flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0 px-8">
+    <div class="absolute bottom-10 w-full flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0 px-8" style="bottom: env(safe-area-inset-bottom);">
         <!-- Bottom-Left: Glowing dot and availability -->
         <div class="flex items-center justify-center space-x-3 tooltip-container">
             <div class="glowing-dot"></div>
