@@ -26,6 +26,14 @@
             font-family: 'Bricolage Grotesque', sans-serif;
         }
 
+        /* Safe area padding for notches and browser UI */
+        .pt-safe {
+            padding-top: env(safe-area-inset-top);
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
         /* Glowing Dot Animation */
         .glowing-dot {
             width: 10px;
@@ -157,7 +165,7 @@
 <body class="bg-black text-white flex flex-col items-center justify-center min-h-screen p-4">
 
     <!-- Header: Contains logo and contact button group -->
-    <div class="absolute top-0 left-0 w-full flex items-center justify-between p-8" style="top: env(safe-area-inset-top);">
+    <div class="absolute top-0 left-0 w-full flex items-center justify-between px-8 pt-safe">
         <!-- Star Logo (Clickable) -->
         <div id="star-logo" class="w-8 h-8 cursor-pointer relative z-20">
             <svg class="w-full h-full text-white" viewBox="0 0 100 100" fill="currentColor">
@@ -203,7 +211,7 @@
     </div>
 
     <!-- Bottom corners and centered languages -->
-    <div class="absolute bottom-10 w-full flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0 px-8" style="bottom: env(safe-area-inset-bottom);">
+    <div class="absolute bottom-0 w-full flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0 p-8 pb-safe">
         <!-- Bottom-Left: Glowing dot and availability -->
         <div class="flex items-center justify-center space-x-3 tooltip-container">
             <div class="glowing-dot"></div>
@@ -214,7 +222,7 @@
         </div>
 
         <!-- Bottom-Center: Languages and icon -->
-        <div class="flex items-center space-x-2 tooltip-container">
+        <div class="flex items-center justify-center space-x-2 tooltip-container">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M2 12h20"/>
