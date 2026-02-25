@@ -324,9 +324,12 @@
     <main class="flex flex-col items-center justify-center flex-none md:flex-grow p-6 pt-32 pb-0 md:py-6 z-10 w-full">
         <div class="flex flex-col items-center w-full">
             
-            <!-- Avatar Node -->
-            <div class="tooltip-container !w-auto">
-                <div class="diagram-frame rounded-full !p-2 !w-auto">
+            <!-- Avatar Node with Warm Glow -->
+            <div class="tooltip-container !w-auto relative">
+                <!-- Warm Glow Behind Avatar -->
+                <div class="absolute inset-0 bg-amber-500/15 blur-[40px] rounded-full pointer-events-none transform scale-150"></div>
+                
+                <div class="diagram-frame rounded-full !p-2 !w-auto relative z-10">
                     <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden relative border border-white/10 shadow-2xl transition-transform hover:scale-105 duration-500">
                         <img src="https://lh3.googleusercontent.com/d/1jzT6YqvOD6V05N9_tigJ--VEixzbejRf=w800" 
                              alt="Matteo Fusco" 
