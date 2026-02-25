@@ -271,7 +271,7 @@
             .diagram-line-v { height: 16px; } 
             .news-banner { font-size: 13px; } /* Increased by 2pts for readability */
             .tooltip { left: 50%; transform: translateX(-50%); width: 260px; }
-            .diagram-stack { padding-bottom: 24px; } /* Extra room before footer gap */
+            .diagram-stack { padding-bottom: 0px; } /* Reset padding as we're using pt-12 on footer */
         }
     </style>
 </head>
@@ -304,8 +304,8 @@
         </div>
     </header>
 
-    <!-- Main Stack: Removed flex-grow on mobile to let footer follow content -->
-    <main class="flex flex-col items-center justify-center flex-none md:flex-grow p-6 pt-20 pb-2 md:py-6 z-10 w-full">
+    <!-- Main Stack: pt-32 on mobile to increase space between button and avatar -->
+    <main class="flex flex-col items-center justify-center flex-none md:flex-grow p-6 pt-32 pb-0 md:py-6 z-10 w-full">
         <div class="flex flex-col items-center w-full">
             
             <!-- Avatar Node -->
@@ -351,7 +351,7 @@
                     <div class="tooltip">A systematic approach to interface design, optimizing workflows through cognitive ergonomics and AI-driven precision.</div>
                 </div>
                 
-                <!-- Tighter Gap on Mobile: Title to Impact -->
+                <!-- Gap on Mobile: Title to Impact -->
                 <div class="diagram-line-v pulse-line line-3"></div>
                 
                 <!-- Impact Banner -->
@@ -377,8 +377,8 @@
         </div>
     </main>
 
-    <!-- Footer: Reduced py to 10 and removed mt-auto on mobile to bring it closer to Impact -->
-    <footer class="relative w-full flex flex-row flex-wrap items-center justify-center gap-x-8 gap-y-6 px-8 py-10 md:mt-0 md:fixed md:bottom-0 md:py-10 pb-safe z-50">
+    <!-- Footer: pt-12 and pb-12 on mobile to match the top perceived distance -->
+    <footer class="relative w-full flex flex-row flex-wrap items-center justify-center gap-x-8 gap-y-6 px-8 pt-12 pb-12 md:mt-0 md:fixed md:bottom-0 md:py-10 pb-safe z-50">
         <div class="tooltip-container !w-auto">
             <div class="flex items-center text-sm text-gray-400 font-medium">
                 <div class="glowing-dot"></div>
