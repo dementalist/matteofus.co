@@ -62,7 +62,7 @@
             position: fixed;
             top: -10%; left: -10%; width: 120%; height: 120%;
             z-index: -2;
-            /* Modifica 1: Pallini più visibili ma non troppo (0.15) */
+            /* Pallini visibili ma non troppo (0.15) */
             background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
             background-size: 32px 32px;
             transform: translate(var(--bg-move-x), var(--bg-move-y));
@@ -332,7 +332,7 @@
                 
                 <div class="diagram-frame rounded-full !p-2 !w-auto relative z-10">
                     <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden relative border border-white/10 shadow-2xl transition-transform hover:scale-105 duration-500">
-                        <!-- Modifica 2: Nuova foto -->
+                        <!-- Nuova foto -->
                         <img src="nuova-foto.jpg" 
                              alt="Matteo Fusco" 
                              class="w-full h-full object-cover" 
@@ -349,8 +349,8 @@
                 
                 <!-- Name Node -->
                 <div class="tooltip-container">
-                    <!-- Modifica 4: Sfondo scuro e blur sulla sezione del nome, angoli arrotondati e padding -->
-                    <div class="diagram-frame rounded-[2rem] py-5 md:py-6" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(24px);">
+                    <!-- Sfondo scuro e blur sulla sezione del nome, angoli arrotondati (rounded-xl) identici a Impact, e padding -->
+                    <div class="diagram-frame rounded-xl py-5 md:py-6" style="background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(24px);">
                         <h1 class="font-primary text-5xl md:text-7xl font-normal tracking-tight px-4 leading-none text-center" id="main-name">Matteo Fusco</h1>
                     </div>
                     <div class="tooltip">Design Lead bridging the gap between human intuition and digital scalability for high-growth US startups.</div>
@@ -388,7 +388,7 @@
                         <span class="text-white">Cyclops</span> – the crypto and stablecoin infrastructure built for payment companies.
                     </p>
                     <div class="mt-4 pt-2 border-t border-white/5">
-                        <!-- Modifica 3: Sicurezza aggiunta -->
+                        <!-- Sicurezza aggiunta (noopener noreferrer) -->
                         <a href="https://www.shift4.com/pay-with-crypto" target="_blank" rel="noopener noreferrer" class="banner-link">
                             Explore Pay with Crypto on Shift4
                             <svg class="external-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -419,7 +419,7 @@
             <div class="tooltip !w-60" style="text-align:center;">Spoken languages</div>
         </div>
         
-        <!-- Modifica 3: Sicurezza aggiunta -->
+        <!-- Sicurezza aggiunta (noopener noreferrer) -->
         <a href="https://www.linkedin.com/in/matteofusco1/" target="_blank" rel="noopener noreferrer" class="text-white hover:opacity-50 transition-opacity">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.75 7 2.651v6.584z"/></svg>
         </a>
